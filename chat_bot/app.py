@@ -5,7 +5,7 @@ import requests
 app = Flask(__name__)
 CORS(app)
 
-OPENAI_API_KEY = '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'
+OPENAI_API_KEY = ''
 OPENAI_API_URL = 'https://api.openai.com/v1/engines/text-davinci-003/completions'
 
 headers = {
