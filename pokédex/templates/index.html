@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <table class="pokemon-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Imagen</th>
+                <th>Nombre</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pokemon in pokemon_list %}
+                <tr>
+                    <td>{{ pokemon.id }}</td>
+                    <td><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{ pokemon.id }}.png"></td>
+                    <td><a href="/pokemon/{{ pokemon.id }}">{{ pokemon.name }}</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

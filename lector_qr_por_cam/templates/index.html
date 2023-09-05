@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webcam Streaming con QR</title>
+    <script>
+        function updateQRData() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    document.getElementById("qr-data").innerHTML = xhr.responseText;
+                }
+            }
+            xhr.open("GET", "/qr_data", true);
+            xhr.send();
+            setTimeout(updateQRData, 1000);
+        }
+    </script>
+</head>
+<body onload="updateQRData()">
+    <h1>Webcam Streaming con QR</h1>
+    <img src="{{ url_for('video_feed') }}" alt="Webcam video" style="width:50%;">
+    <h2 id="qr-data" style="text-align:center;">N/A</h2>
+</body>
+</html>

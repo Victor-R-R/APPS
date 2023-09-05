@@ -1,0 +1,46 @@
+<html lang='es'>
+    <head>
+        <meta charset='UTF-8'>
+        <title>Lista Éxitos año 2000´s</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <link rel="stylesheet" href="https://maxdn.bootsrtapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1 class='mt-5 mb-3'>Éxitos musicales de Spotify</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Artista</th>
+                        <th>Álbum</th>
+                        <th>Imagen</th>
+                        <th>Previsualizacion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for track in tracks %}
+                    <tr>
+                        <td>{{ track.name }}</td>
+                        <td>{{ track.artist }}</td>
+                        <td>{{ track.album }}</td>
+                        <td><img src="{{ track.image_url }}" alt="{{ track.name }}" width="100" height="100"></td>
+                        <td>
+                            {% if track.preview_url %}
+                            <audio controls>
+                                <source src="{{ track.preview_url }}" type='audio/mpeg'>  
+                            </audio>
+                            {% else %}
+                            <span>No disponible</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+        <script src="https://maxdn.bootsrtapcdn.com/bootstrap/4.5.2/css/bootstrap.min.js"></script>
+    </body>
+</html>

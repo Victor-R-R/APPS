@@ -1,0 +1,12 @@
+<html lang='en'>
+    <head>
+        <meta charset='UTF-8'>
+        <title>Código QR generado</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <h1>Código QR generado</h1>
+        <p>URL: {{ url }}</p>
+        <img src="{{ url_for('static', filename=filename) }}" alt="Código QR generado">
+    </body>
+</html>

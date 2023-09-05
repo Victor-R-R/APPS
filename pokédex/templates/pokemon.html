@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="pokemon-details">
+        <h1>{{ pokemon.name }}</h1>
+        <p>ID: {{ pokemon.id }}</p>
+        <p>Habilidades: {{ ", ".join(pokemon.abilities) }}</p>
+        <img src="{{ pokemon.image_url }}" alt="{{ pokemon.name }}">
+    </div>
+{% endblock %}

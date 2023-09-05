@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Traductor</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>Traductor</h1>
+    <div class="language-selectors">
+        <div class="selector">
+            <label for="source_lang">Origen:</label>
+            <select name="source_lang" id="source_lang">
+                <option value="es">Español</option>
+                <option value="en">Inglés</option>
+                <option value="fr">Francés</option>
+                <option value="it">Italiano</option>
+                <option value="de">Alemán</option>
+                <!-- Add more language options here if needed -->
+            </select>
+        </div>
+        <div class="swap-button-container">
+            <button type="button" class="swap-button" onclick="swapLanguages">&#8644;</button>
+        </div>
+        <div class="selector">
+            <label for="target_lang">Destino:</label>
+            <select name="target_lang" id="target_lang">
+                <option value="en">Inglés</option>
+                <option value="fr">Francés</option>
+                <option value="it">Italiano</option>
+                <option value="de">Alemán</option>
+                <option value="es">Español</option>
+                <!-- Add more language options here if needed -->
+            </select>
+        </div>
+    </div>
+
+    <form method="POST" action="/">
+        <div class="input-wrapper">
+            <label for="text_es">Español:</label>
+            <textarea id="text_es" name="text" placeholder="Escriba el texto que desea traducir"></textarea>
+        </div>
+
+        {% if translations is defined %}
+        <div class="input-wrapper">
+            <label for="text_translated">Texto traducido:</label>
+            <textarea id="text_translated" name="text_translated" readonly>{{ translations.translation }}</textarea>
+        </div>
+        {% endif %}
+
+        <button type="submit">Traducir</button>
+    </form>
+</div>
+
+<script>
+    function swapLanguages() {
+        var sourceLang = document.getElementById("source_lang");
+        var targetLang = document.getElementById("target_lang");
+        var tempValue = sourceLang.value;
+        sourceLang.value = targetLang.value;
+        targetLang.value = tempValue;
+    }
+</script>
+
+</body>
+</html>
